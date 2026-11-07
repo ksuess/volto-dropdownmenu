@@ -40,7 +40,7 @@ const Navigation = ({ pathname, type }) => {
     (state) => state.site?.data?.features?.multilingual,
   );
   const intl = useIntl();
-  const { lang } = intl.locale;
+  const lang = intl.locale;
   const dispatch = useDispatch();
   const navRef = useRef(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);

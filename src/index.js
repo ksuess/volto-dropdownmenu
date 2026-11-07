@@ -1,9 +1,6 @@
 import menuSVG from '@plone/volto/icons/menu.svg';
 import { dropdownMenuNavItemsReducer } from './reducers';
-import {
-  MenuConfigurationWidget,
-  MenuConfigurationForm,
-} from 'volto-dropdownmenu/widget';
+import { MenuConfigurationWidget, MenuConfigurationForm } from './widget';
 
 import { getDropdownMenuNavitems } from './actions';
 import { getItemsByPath } from './utils';
@@ -44,7 +41,7 @@ const applyConfig = (config) => {
           dispatchActions.push({
             key: 'dropdownMenuNavItems',
             promise: ({ location, store: { dispatch } }) =>
-              dispatch(getDropdownMenuNavitems()),
+              __SERVER__ && dispatch(getDropdownMenuNavitems()),
           });
         }
         return dispatchActions;

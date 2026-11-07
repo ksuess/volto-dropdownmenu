@@ -82,6 +82,11 @@ const messages = defineMessages({
   },
 });
 
+// Empty schema for the embedded blocks form. Without it, Volto's optional
+// save-as-draft feature (config.experimental.saveAsDraft) crashes on
+// `schema.properties` being undefined.
+const blocksFormSchema = { fieldsets: [], properties: {} };
+
 const MenuConfigurationForm = ({ id, menuItem, onChange, deleteMenuItem }) => {
   const intl = useIntl();
   const defaultBlockId = uuid();
@@ -284,6 +289,7 @@ const MenuConfigurationForm = ({ id, menuItem, onChange, deleteMenuItem }) => {
                       formData={menuItem}
                       visual={true}
                       hideActions
+                      schema={blocksFormSchema}
                       onChangeFormData={onChangeFormBlocks}
                     />
                   </div>
